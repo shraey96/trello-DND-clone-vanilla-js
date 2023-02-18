@@ -1,3 +1,16 @@
+/**
+~~~~~~~~~~~~~~~~~~~ GENERIC UTILS ~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * @function addEventListenersToElements
+ * @param {array} elements
+ * @param {string} eventName
+ * @param {function} callback
+ *
+ * @description Attaches event listeners on a list of elements, given an eventName, and runs the provided callback for it
+ * @returns {boolean}
+ */
 export const addEventListenersToElements = (
   elements = [],
   eventName,
@@ -8,6 +21,13 @@ export const addEventListenersToElements = (
   });
 };
 
+/**
+ * @function isEmpty
+ * @param {any} value
+ *
+ * @description Returns boolean depending on if value is empty or not
+ * @returns {boolean}
+ */
 export const isEmpty = (value) => {
   if (typeof value === "undefined" || value === null) return true;
   if (Array.isArray(value) && value.length === 0) return true;
@@ -16,12 +36,38 @@ export const isEmpty = (value) => {
   return false;
 };
 
+/**
+~~~~~~~~~~~~~~~~~~~ DRAG HELPER UTILS ~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * @function itemOnDragStart
+ * @param {object} element
+ *
+ * @description helper util to mark item as dragging
+ * @returns {boolean}
+ */
 export const itemOnDragStart = (element) =>
   element.classList.add("task-item--is-dragging");
 
+/**
+ * @function itemOnDragEnd
+ * @param {object} element
+ *
+ * @description helper util to mark item as not dragging
+ * @returns {boolean}
+ */
 export const itemOnDragEnd = (element) =>
   element.classList.remove("task-item--is-dragging");
 
+/**
+ * @function getTaskToInsertAbove
+ * @param {string} listItem
+ * @param {number} clientY
+ *
+ * @description returns closest element below the mouseY, so that we can insert the dragged element above it
+ * @returns {object}
+ */
 export const getTaskToInsertAbove = (listItem, clientY) => {
   const nonDraggingTasksForList = listItem.querySelectorAll(
     ".task-item:not(.task-item--is-dragging)"
@@ -39,6 +85,12 @@ export const getTaskToInsertAbove = (listItem, clientY) => {
   return closestTask;
 };
 
+/**
+ * @function insertItemInList
+ * @param {object} e
+ *
+ * @description helper util to append or insertbefore a dragging card, to a new list (or re-arranging in same list)
+ */
 export const insertItemInList = (e) => {
   e.preventDefault();
   const listItem = e.currentTarget;
@@ -51,6 +103,16 @@ export const insertItemInList = (e) => {
   }
 };
 
+/**
+~~~~~~~~~~~~~~~~~~~ FORM HELPER UTILS ~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * @function attachCloseBtnEventListener
+ * @param {array} nodes
+ *
+ * @description attaches 'click' eventlistener to nodes list, which is used for removing task or list
+ */
 export const attachCloseBtnEventListener = (nodes = []) => {
   addEventListenersToElements(nodes, "click", (e) => {
     const isListClose = e.target.dataset.closeType === "list";
@@ -64,6 +126,12 @@ export const attachCloseBtnEventListener = (nodes = []) => {
   });
 };
 
+/**
+ * @function attachAddBtnListener
+ * @param {array} nodes
+ *
+ * @description attaches 'click' eventlistener to nodes list, which is used for opening add form for task or list
+ */
 export const attachAddBtnListener = (nodes = []) => {
   addEventListenersToElements(nodes, "click", (e) => {
     const closestList = e.target.closest(".list-item");

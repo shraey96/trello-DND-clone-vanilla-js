@@ -14,11 +14,20 @@ const taskFormTitleInput = document.querySelector("#task-title-input");
 const taskFormDescInput = document.querySelector("#task-desc-input");
 const listFormTitleInput = document.querySelector("#list-title-input");
 
+/**
+ * @function clearFormDataAttributes
+ *
+ * @description removes form data attributes which were being used to identify formType and formList
+ * @returns {boolean}
+ */
 const clearFormDataAttributes = () => {
   taskForm.removeAttribute("data-form-type");
   taskForm.removeAttribute("data-form-list");
 };
 
+/**
+ adds sumbit event listener to form, and adds task or list accordingly
+ */
 addEventListenersToElements([taskForm], "submit", (e) => {
   e.preventDefault();
   const isTaskForm = e.target.dataset.formType === "task";
@@ -45,6 +54,9 @@ addEventListenersToElements([taskForm], "submit", (e) => {
   taskFormContainer.classList.remove("task-form-container--visible");
 });
 
+/**
+ adds click event listener to form close btn to close form
+ */
 addEventListenersToElements([formCloseBtn], "click", () => {
   taskFormContainer.classList.remove("task-form-container--visible");
   clearFormDataAttributes();

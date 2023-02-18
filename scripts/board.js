@@ -10,6 +10,13 @@ import {
 
 const LOCAL_STORAGE_KEY = "lists_and_tasks";
 
+/**
+ * @function createAndAddTask
+ * @param {object} payload
+ * @param {string} list
+ *
+ * @description creates and new task and adds it to the DOM, and attaches needed eventlisteners for the same
+ */
 export const createAndAddTask = (payload = {}, list) => {
   const elementToInsertTaskTo =
     document.querySelector(`.list-item[data-list-type="${list}"]`) ||
@@ -48,6 +55,12 @@ export const createAndAddTask = (payload = {}, list) => {
   elementToInsertTaskTo.appendChild(taskDiv);
 };
 
+/**
+ * @function creatcreateAndAddListeAndAddTask
+ * @param {string} title
+ *
+ * @description creates and new list and adds it to the DOM, and attaches needed eventlisteners for the same
+ */
 export const createAndAddList = (title) => {
   const escapedListTitle = title.replaceAll(" ", "");
 
@@ -81,6 +94,9 @@ export const createAndAddList = (title) => {
   addEventListenersToElements([listItemDiv], "dragover", insertItemInList);
 };
 
+/**
+ On refresh of page, scrape DOM and build an array of list and its task to save to localStorage
+ */
 addEventListenersToElements([window], "beforeunload", () => {
   const storagePayload = [];
   Array.from(document.querySelectorAll(".list-item")).forEach((listItem) => {
@@ -108,6 +124,9 @@ addEventListenersToElements([window], "beforeunload", () => {
   }
 });
 
+/**
+ On load of page, retrieve array of lists and its task and add to DOM
+ */
 window.onload = () => {
   const listsFromLocalStorage =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
