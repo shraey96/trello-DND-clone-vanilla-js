@@ -1,0 +1,39 @@
+@import url("./reset.css");
+@import url("./form.css");
+@import url("./task.css");
+@import url("./list.css");
+
+.board {
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+  background-image: url(https://images.unsplash.com/photo-1520034475321-cbe63696469a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  background-position: center;
+  background-size: cover;
+}
+
+.board__heading {
+  text-align: center;
+  color: #fff;
+  font-size: 32px;
+  margin: 24px 0;
+}
+
+.add-list-btn {
+  position: fixed;
+  right: 20px;
+  top: 30px;
+  background-color: #f0ad4e;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  padding: 8px;
+  top: 0;
+  right: 0;
+}

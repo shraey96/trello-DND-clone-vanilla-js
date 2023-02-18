@@ -1,0 +1,27 @@
+/* ---- TASK ITEM ---- */
+
+.task-item {
+  background: white;
+  color: black;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: move;
+  position: relative;
+}
+
+.task-item__title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.task-item__desc {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.task-item--is-dragging {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello DND Vanilla</title>
+    <link href="styles/style.css" rel="stylesheet" />
+    <script src="scripts/board.js" type="module"></script>
+    <script src="scripts/form.js" type="module"></script>
+  </head>
+  <body>
+    <div class="board">
+      <h3 class="board__heading">Trello Board Clone</h3>
+      <div class="task-form-container">
+        <form class="task-form">
+          <h3 class="heading-task">Add Task</h3>
+          <h3 class="heading-list">Add List</h3>
+          <input type="text" placeholder="New List..." id="list-title-input" />
+          <input type="text" placeholder="New Task..." id="task-title-input" />
+          <input
+            type="text"
+            placeholder="New Task Description..."
+            id="task-desc-input"
+          />
+          <button type="submit">Add +</button>
+          <span class="close-btn close-btn--form">x</span>
+        </form>
+      </div>
+      <div class="lists-container">
+        <div class="list-item" data-list-type="todo">
+          <h3 class="list-item__heading">TODO</h3>
+          <div class="task-item" draggable="true">
+            <p class="task-item__title">Task Header</p>
+            <p class="task-item__desc">Get groceries</p>
+            <span class="close-btn" data-close-type="task">x</span>
+          </div>
+          <div class="task-item" draggable="true">
+            <p class="task-item__title">Task Header2</p>
+            <p class="task-item__desc">Get food</p>
+            <span class="close-btn" data-close-type="task">x</span>
+          </div>
+          <div class="task-item" draggable="true">
+            <p class="task-item__title">Task Header3</p>
+            <p class="task-item__desc">Get water</p>
+            <span class="close-btn" data-close-type="task">x</span>
+          </div>
+          <span class="close-btn" data-close-type="list">x</span>
+          <button class="add-btn list-item__add-task-btn" data-add-type="task">
+            +
+          </button>
+        </div>
+        <div class="list-item" data-list-type="inprogress">
+          <h3 class="list-item__heading">In Progress</h3>
+          <div class="task-item" draggable="true">
+            <p class="task-item__title">Task Header1</p>
+            <p class="task-item__desc">Get Water</p>
+            <span class="close-btn" data-close-type="task">x</span>
+          </div>
+          <span class="close-btn" data-close-type="list">x</span>
+          <button class="add-btn list-item__add-task-btn" data-add-type="task">
+            +
+          </button>
+        </div>
+        <div class="list-item" data-list-type="done">
+          <h3 class="list-item__heading">Done</h3>
+          <div class="task-item" draggable="true">
+            <p class="task-item__title">Task Header1</p>
+            <p class="task-item__desc">Get Food</p>
+            <span class="close-btn" data-close-type="task">x</span>
+          </div>
+          <span class="close-btn" data-close-type="list">x</span>
+          <button class="add-btn list-item__add-task-btn" data-add-type="task">
+            +
+          </button>
+        </div>
+      </div>
+      <button class="add-btn add-list-btn" data-add-type="list">
+        Add List
+      </button>
+    </div>
+  </body>
+</html>
